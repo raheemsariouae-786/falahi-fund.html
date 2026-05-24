@@ -6,376 +6,106 @@
 <title>فلاحی فنڈ — TMC سہراب گوٹھ</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
-
-:root {
-  --green:   #1a7a4a;
-  --green2:  #22a060;
-  --green3:  #d1fae5;
-  --gold:    #c8891a;
-  --goldb:   #fef3c7;
-  --dark:    #0c1f14;
-  --mid:     #1e4d2b;
-  --light:   #f4fbf6;
-  --white:   #ffffff;
-  --muted:   #6b8c78;
-  --border:  #c8e6d4;
-  --red:     #dc2626;
-  --redb:    #fee2e2;
-  --blue:    #1d4ed8;
-  --blueb:   #dbeafe;
-  --r:       16px;
-  --sh:      0 4px 24px rgba(26,122,74,0.10);
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  background: linear-gradient(150deg, #e8f5ec 0%, #f9f3e3 100%);
-  min-height: 100vh;
-  font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
-  color: var(--dark);
-  padding: 8px;
-}
-
-/* ═══ SHELL ═══ */
-.shell {
-  max-width: 480px;
-  margin: 0 auto;
-  background: var(--white);
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(12,31,20,0.15);
-  min-height: 95vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ═══ HEADER ═══ */
-.hdr {
-  background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 55%, var(--green) 100%);
-  padding: 26px 20px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hdr::before {
-  content:'';
-  position:absolute; top:-50px; right:-50px;
-  width:160px; height:160px;
-  background: rgba(255,255,255,0.04);
-  border-radius:50%;
-}
-.hdr::after {
-  content:'';
-  position:absolute; bottom:-40px; left:-30px;
-  width:130px; height:130px;
-  background: rgba(200,137,26,0.08);
-  border-radius:50%;
-}
-.hdr-emblem {
-  width:64px; height:64px;
-  background: linear-gradient(135deg, var(--gold), #f4c842);
-  border-radius:20px;
-  margin:0 auto 12px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:30px;
-  box-shadow: 0 6px 20px rgba(200,137,26,0.4);
-  position:relative; z-index:1;
-}
-.hdr h1 {
-  color:#fff;
-  font-size:22px;
-  font-weight:700;
-  line-height:1.4;
-  position:relative; z-index:1;
-}
-.hdr .sub {
-  color:rgba(255,255,255,0.65);
-  font-size:12px;
-  margin-top:4px;
-  position:relative; z-index:1;
-}
-.hdr-stats {
-  display:grid; grid-template-columns:1fr 1fr 1fr;
-  gap:8px; margin-top:16px;
-  position:relative; z-index:1;
-}
-.hdr-stat {
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:12px;
-  padding:10px 6px;
-  text-align:center;
-}
-.hdr-stat .sv { font-size:18px; font-weight:800; color:#f4c842; }
-.hdr-stat .sl { font-size:10px; color:rgba(255,255,255,0.65); margin-top:2px; }
-
-/* ═══ TICKER ═══ */
-.ticker {
-  background: var(--goldb);
-  border-bottom:1px solid #fde68a;
-  padding:8px 16px;
-  font-size:11px;
-  color: var(--gold);
-  font-weight:700;
-  text-align:center;
-  white-space:nowrap;
-  overflow:hidden;
-}
-.ticker span { display:inline-block; animation: scroll-rtl 18s linear infinite; }
-@keyframes scroll-rtl {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* ═══ SCREENS ═══ */
-.screen { display:none; padding:20px; flex:1; }
-.screen.active { display:block; }
-
-/* ═══ SECTION TITLE ═══ */
-.stitle {
-  font-size:16px; font-weight:700;
-  color:var(--dark);
-  text-align:center;
-  margin-bottom:18px;
-  padding-bottom:10px;
-  border-bottom:2px solid var(--border);
-}
-
-/* ═══ INFO BOXES ═══ */
-.ibox {
-  border-radius:12px; padding:14px;
-  margin-bottom:16px; font-size:12px;
-  line-height:1.9; text-align:right;
-}
-.ibox.green { background:var(--green3); border:1.5px solid #6ee7b7; color:#065f46; }
-.ibox.gold  { background:var(--goldb);  border:1.5px solid #fde68a; color:#78350f; }
-.ibox.blue  { background:var(--blueb);  border:1.5px solid #93c5fd; color:#1e3a8a; }
-.ibox.red   { background:var(--redb);   border:1.5px solid #fca5a5; color:#7f1d1d; }
-
-/* ═══ FORM ═══ */
-.fg { margin-bottom:15px; }
-.fg label { display:block; font-size:12px; font-weight:700; color:var(--muted); margin-bottom:5px; }
-.fg input, .fg select, .fg textarea {
-  width:100%; padding:12px 14px;
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  font-size:14px;
-  font-family:inherit;
-  text-align:right;
-  outline:none;
-  background:var(--light);
-  color:var(--dark);
-  transition:border 0.2s;
-  resize:none;
-}
-.fg input:focus, .fg select:focus, .fg textarea:focus {
-  border-color:var(--green); background:#fff;
-}
-
-/* ═══ BUTTONS ═══ */
-.btn {
-  width:100%; padding:14px;
-  border:none; border-radius:30px;
-  font-size:14px; font-weight:700;
-  font-family:inherit; cursor:pointer;
-  transition:all 0.25s; margin-bottom:10px;
-}
-.btn-green {
-  background:linear-gradient(135deg, var(--mid), var(--green));
-  color:#fff;
-  box-shadow:0 5px 18px rgba(26,122,74,0.3);
-}
-.btn-green:hover { transform:translateY(-2px); }
-.btn-gold {
-  background:linear-gradient(135deg, var(--gold), #f4c842);
-  color:var(--dark);
-  box-shadow:0 5px 18px rgba(200,137,26,0.3);
-}
-.btn-outline {
-  background:transparent;
-  color:var(--green);
-  border:2px solid var(--green);
-}
-.btn-red { background:var(--red); color:#fff; }
-.btn-sm { width:auto; padding:8px 18px; font-size:12px; margin-bottom:0; display:inline-block; }
-
-/* ═══ CARDS ═══ */
-.card {
-  background:var(--light);
-  border:1.5px solid var(--border);
-  border-radius:var(--r);
-  padding:16px;
-  margin-bottom:14px;
-  box-shadow:var(--sh);
-}
-.crow {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 0; border-bottom:1px solid var(--border);
-}
-.crow:last-child { border-bottom:none; padding-bottom:0; }
-.crow .lbl { font-size:12px; color:var(--muted); }
-.crow .val { font-size:13px; font-weight:700; color:var(--dark); }
-.crow .val.g { color:var(--green2); }
-.crow .val.r { color:var(--red); }
-.crow .val.gold { color:var(--gold); }
-
-/* ═══ PROJECT CARD ═══ */
-.proj-card {
-  background:#fff;
-  border:1.5px solid var(--border);
-  border-radius:var(--r);
-  padding:16px;
-  margin-bottom:12px;
-  box-shadow:var(--sh);
-  cursor:pointer;
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.proj-card:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(26,122,74,0.15); }
-.proj-title { font-size:15px; font-weight:700; color:var(--dark); margin-bottom:4px; }
-.proj-sub { font-size:11px; color:var(--muted); margin-bottom:12px; }
-.proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.proj-stat { background:var(--light); border-radius:10px; padding:8px; text-align:center; }
-.proj-stat .ps-v { font-size:14px; font-weight:800; color:var(--green); }
-.proj-stat .ps-l { font-size:10px; color:var(--muted); margin-top:1px; }
-
-/* ═══ PROGRESS ═══ */
-.prog { margin:12px 0 6px; }
-.prog-top { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:5px; }
-.prog-bg { background:#e2e8f0; border-radius:10px; height:8px; overflow:hidden; }
-.prog-fill { background:linear-gradient(90deg, var(--green), var(--green2)); height:100%; border-radius:10px; transition:width 0.6s ease; }
-.prog-fill.gold { background:linear-gradient(90deg, var(--gold), #f4c842); }
-.prog-fill.red { background:linear-gradient(90deg, #ef4444, #f87171); }
-
-/* ═══ BADGE ═══ */
-.badge {
-  display:inline-block; padding:3px 12px;
-  border-radius:20px; font-size:11px; font-weight:700;
-}
-.badge-active  { background:#d1fae5; color:#065f46; }
-.badge-done    { background:#dbeafe; color:#1e40af; }
-.badge-pending { background:#fef3c7; color:#92400e; }
-.badge-urgent  { background:#fee2e2; color:#991b1b; }
-
-/* ═══ LEDGER TABLE ═══ */
-.ledger-row {
-  display:flex; align-items:center;
-  padding:12px 0; border-bottom:1px dashed var(--border);
-  gap:12px;
-}
-.ledger-row:last-child { border-bottom:none; }
-.led-icon {
-  width:38px; height:38px; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:18px; flex-shrink:0;
-}
-.led-in  { background:#d1fae5; }
-.led-out { background:#fee2e2; }
-.led-info { flex:1; text-align:right; }
-.led-title { font-size:13px; font-weight:700; }
-.led-sub   { font-size:11px; color:var(--muted); margin-top:2px; }
-.led-amount { text-align:left; white-space:nowrap; }
-.led-amount .la { font-size:15px; font-weight:800; }
-.led-amount .la.in  { color:var(--green2); }
-.led-amount .la.out { color:var(--red); }
-.led-amount .ld { font-size:10px; color:var(--muted); }
-
-/* ═══ DONOR HONOR ═══ */
-.donor-row {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 0; border-bottom:1px dashed var(--border);
-}
-.donor-row:last-child { border-bottom:none; }
-.donor-name { font-size:13px; font-weight:700; }
-.donor-area { font-size:11px; color:var(--muted); }
-.donor-amt  { font-size:15px; font-weight:800; color:var(--green2); }
-
-/* ═══ TABS ═══ */
-.tabs { display:flex; background:var(--light); border-radius:12px; padding:4px; margin-bottom:16px; gap:4px; }
-.tab { flex:1; padding:9px 4px; border:none; background:transparent; border-radius:10px; font-family:inherit; font-size:11px; font-weight:700; color:var(--muted); cursor:pointer; transition:all 0.2s; }
-.tab.on { background:var(--green); color:#fff; box-shadow:0 2px 8px rgba(26,122,74,0.3); }
-.tpanel { display:none; }
-.tpanel.on { display:block; }
-
-/* ═══ BOTTOM NAV ═══ */
-.bnav {
-  display:none;
-  background:#fff;
-  border-top:1.5px solid var(--border);
-  position:sticky; bottom:0; z-index:20;
-}
-.bni {
-  flex:1; padding:12px 6px 10px; text-align:center;
-  cursor:pointer; transition:all 0.2s;
-  border:none; background:none; font-family:inherit;
-}
-.bni .ni { font-size:20px; display:block; }
-.bni .nl { font-size:10px; color:var(--muted); margin-top:2px; display:block; }
-.bni.on .nl { color:var(--green); font-weight:700; }
-.bni:hover { background:var(--light); }
-
-/* ═══ MODAL ═══ */
-.modal-ov {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,0.55); z-index:100;
-  align-items:center; justify-content:center; padding:20px;
-}
-.modal-ov.open { display:flex; }
-.mbox {
-  background:#fff; border-radius:22px;
-  padding:28px 22px; max-width:380px; width:100%;
-  text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,0.3);
-  animation: popIn 0.25s ease;
-}
-@keyframes popIn { from { transform:scale(0.85); opacity:0; } to { transform:scale(1); opacity:1; } }
-.m-icon  { font-size:52px; margin-bottom:14px; }
-.m-title { font-size:20px; font-weight:700; margin-bottom:10px; }
-.m-msg   { font-size:13px; color:var(--muted); line-height:1.9; }
-.m-acts  { margin-top:20px; display:flex; flex-direction:column; gap:8px; }
-.m-acts .btn { margin-bottom:0; }
-
-/* ═══ TOAST ═══ */
-.toast {
-  position:fixed; top:16px; left:50%; transform:translateX(-50%);
-  background:var(--dark); color:#fff;
-  padding:12px 22px; border-radius:30px;
-  font-size:13px; z-index:999;
-  opacity:0; transition:opacity 0.3s;
-  max-width:92%; text-align:center;
-  pointer-events:none;
-}
-.toast.show { opacity:1; }
-
-/* ═══ DIVIDER ═══ */
-.div { height:1px; background:var(--border); margin:16px 0; }
-
-/* ═══ SUMMARY BOXES ═══ */
-.sum-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
-.sum-box { background:var(--light); border:1.5px solid var(--border); border-radius:14px; padding:14px; text-align:center; }
-.sum-box .sbv { font-size:20px; font-weight:800; }
-.sum-box .sbl { font-size:11px; color:var(--muted); margin-top:3px; }
-.sum-box.g .sbv { color:var(--green2); }
-.sum-box.gold .sbv { color:var(--gold); }
-.sum-box.r .sbv { color:var(--red); }
-.sum-box.b .sbv { color:var(--blue); }
-
-/* Back button */
-.back-row { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
-.back-btn { border:none; background:none; font-size:22px; cursor:pointer; line-height:1; padding:4px; }
-
-@media(max-width:360px) {
-  .hdr h1 { font-size:18px; }
-  .hdr-stat .sv { font-size:15px; }
-}
+:root{--green:#1a7a4a;--green2:#22a060;--green3:#d1fae5;--gold:#c8891a;--goldb:#fef3c7;--dark:#0c1f14;--mid:#1e4d2b;--light:#f4fbf6;--white:#ffffff;--muted:#6b8c78;--border:#c8e6d4;--red:#dc2626;--redb:#fee2e2;--blue:#1d4ed8;--blueb:#dbeafe}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(150deg,#e8f5ec 0%,#f9f3e3 100%);min-height:100vh;font-family:'Noto Nastaliq Urdu','Segoe UI',sans-serif;color:var(--dark);padding:8px}
+.shell{max-width:480px;margin:0 auto;background:var(--white);border-radius:26px;overflow:hidden;box-shadow:0 20px 60px rgba(12,31,20,.15);min-height:95vh;display:flex;flex-direction:column}
+.hdr{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 55%,var(--green) 100%);padding:26px 20px 20px;text-align:center;position:relative;overflow:hidden}
+.hdr h1{color:#fff;font-size:22px;font-weight:700;line-height:1.4;position:relative;z-index:1}
+.hdr .sub{color:rgba(255,255,255,.65);font-size:12px;margin-top:4px;position:relative;z-index:1}
+.hdr-emblem{width:64px;height:64px;background:linear-gradient(135deg,var(--gold),#f4c842);border-radius:20px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 6px 20px rgba(200,137,26,.4);position:relative;z-index:1}
+.hdr-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px;position:relative;z-index:1}
+.hdr-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:10px 6px;text-align:center}
+.hdr-stat .sv{font-size:17px;font-weight:800;color:#f4c842}
+.hdr-stat .sl{font-size:10px;color:rgba(255,255,255,.65);margin-top:2px}
+.ticker{background:var(--goldb);border-bottom:1px solid #fde68a;padding:8px 16px;font-size:11px;color:var(--gold);font-weight:700;text-align:center;overflow:hidden}
+.ticker span{display:inline-block;animation:scrolltxt 22s linear infinite}
+@keyframes scrolltxt{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.screen{display:none;padding:20px;flex:1}
+.screen.active{display:block}
+.stitle{font-size:16px;font-weight:700;color:var(--dark);text-align:center;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.ibox{border-radius:12px;padding:14px;margin-bottom:16px;font-size:12px;line-height:1.9;text-align:right}
+.ibox.green{background:var(--green3);border:1.5px solid #6ee7b7;color:#065f46}
+.ibox.gold{background:var(--goldb);border:1.5px solid #fde68a;color:#78350f}
+.ibox.blue{background:var(--blueb);border:1.5px solid #93c5fd;color:#1e3a8a}
+.fg{margin-bottom:15px}
+.fg label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:inherit;text-align:right;outline:none;background:var(--light);color:var(--dark);transition:border .2s;resize:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);background:#fff}
+.btn{width:100%;padding:14px;border:none;border-radius:30px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .25s;margin-bottom:10px}
+.btn-green{background:linear-gradient(135deg,var(--mid),var(--green));color:#fff;box-shadow:0 5px 18px rgba(26,122,74,.3)}
+.btn-green:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#f4c842);color:var(--dark);box-shadow:0 5px 18px rgba(200,137,26,.3)}
+.btn-outline{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn-red{background:var(--red);color:#fff}
+.btn-sm{width:auto;padding:8px 18px;font-size:12px;margin-bottom:0;display:inline-block}
+.card{background:var(--light);border:1.5px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px}
+.crow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.crow:last-child{border-bottom:none;padding-bottom:0}
+.crow .lbl{font-size:12px;color:var(--muted)}
+.crow .val{font-size:13px;font-weight:700;color:var(--dark)}
+.crow .val.g{color:var(--green2)}.crow .val.gold{color:var(--gold)}.crow .val.r{color:var(--red)}
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.sum-box{background:var(--light);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.sum-box .sbv{font-size:20px;font-weight:800}
+.sum-box .sbl{font-size:11px;color:var(--muted);margin-top:3px}
+.sum-box.g .sbv{color:var(--green2)}.sum-box.gold .sbv{color:var(--gold)}.sum-box.r .sbv{color:var(--red)}.sum-box.b .sbv{color:var(--blue)}
+.tabs{display:flex;background:var(--light);border-radius:12px;padding:4px;margin-bottom:16px;gap:4px}
+.tab{flex:1;padding:9px 4px;border:none;background:transparent;border-radius:10px;font-family:inherit;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s}
+.tab.on{background:var(--green);color:#fff}
+.tpanel{display:none}.tpanel.on{display:block}
+.ledger-row{display:flex;align-items:center;padding:12px 0;border-bottom:1px dashed var(--border);gap:12px}
+.ledger-row:last-child{border-bottom:none}
+.led-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.led-in{background:#d1fae5}.led-out{background:#fee2e2}
+.led-info{flex:1;text-align:right}
+.led-title{font-size:13px;font-weight:700}
+.led-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.led-amt{text-align:left;white-space:nowrap}
+.led-amt .la{font-size:15px;font-weight:800}
+.led-amt .la.in{color:var(--green2)}.led-amt .la.out{color:var(--red)}
+.led-amt .ld{font-size:10px;color:var(--muted)}
+.donor-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--border)}
+.donor-row:last-child{border-bottom:none}
+.proj-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px}
+.prog{margin:10px 0 4px}
+.prog-top{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:5px}
+.prog-bg{background:#e2e8f0;border-radius:10px;height:8px;overflow:hidden}
+.prog-fill{background:linear-gradient(90deg,var(--green),var(--green2));height:100%;border-radius:10px}
+.badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.badge-active{background:#d1fae5;color:#065f46}
+.badge-done{background:#dbeafe;color:#1e40af}
+.bnav{background:#fff;border-top:1.5px solid var(--border);position:sticky;bottom:0;z-index:20;display:flex}
+.bni{flex:1;padding:12px 6px 10px;text-align:center;cursor:pointer;border:none;background:none;font-family:inherit}
+.bni .ni{font-size:20px;display:block}.bni .nl{font-size:10px;color:var(--muted);margin-top:2px;display:block}
+.bni.on .nl{color:var(--green);font-weight:700}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal-ov.open{display:flex}
+.mbox{background:#fff;border-radius:22px;padding:28px 22px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:popIn .25s ease}
+@keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.m-icon{font-size:52px;margin-bottom:14px}.m-title{font-size:20px;font-weight:700;margin-bottom:10px}
+.m-msg{font-size:13px;color:var(--muted);line-height:1.9}
+.m-acts{margin-top:20px;display:flex;flex-direction:column;gap:8px}.m-acts .btn{margin-bottom:0}
+.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 22px;border-radius:30px;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;max-width:92%;text-align:center;pointer-events:none}
+.toast.show{opacity:1}
+.div{height:1px;background:var(--border);margin:16px 0}
+.back-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.back-btn{border:none;background:none;font-size:22px;cursor:pointer;line-height:1;padding:4px}
+.zero-box{text-align:center;padding:30px 20px;color:var(--muted)}
+.zero-box .zi{font-size:48px;margin-bottom:12px}
+.zero-box .zt{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--dark)}
+.zero-box .zs{font-size:12px;line-height:1.8}
+.uc-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px}
+.uc-table th{background:var(--mid);color:#fff;padding:10px 8px;text-align:right}
+.uc-table td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:right}
+.uc-table tr:nth-child(even) td{background:var(--light)}
+.pay-guide{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);margin-bottom:16px}
+.pg-head{background:var(--mid);color:#fff;padding:10px 14px;font-size:13px;font-weight:700}
+.pg-body{padding:14px;font-size:12px;line-height:2;background:var(--light)}
 </style>
 </head>
 <body>
-
-<!-- TOAST -->
 <div id="toast" class="toast"></div>
-
-<!-- MODAL -->
 <div id="modal" class="modal-ov">
   <div class="mbox">
     <div class="m-icon" id="mi"></div>
@@ -386,735 +116,458 @@ body {
 </div>
 
 <div class="shell">
-
-  <!-- ══ HEADER ══ -->
   <div class="hdr">
     <div class="hdr-emblem">🌿</div>
     <h1>فلاحی فنڈ — عوامی خزانہ</h1>
-    <div class="sub">TMC سہراب گوٹھ | کونسلر عبدالرحیم ساریو</div>
+    <div class="sub">TMC سہراب گوٹھ | کونسلر عبدالرحیم ساریو | شرقی ضلع کراچی</div>
     <div class="hdr-stats">
-      <div class="hdr-stat">
-        <div class="sv" id="hdr-total">0</div>
-        <div class="sl">کل چندہ (₨)</div>
-      </div>
-      <div class="hdr-stat">
-        <div class="sv" id="hdr-spent">0</div>
-        <div class="sl">خرچ شدہ (₨)</div>
-      </div>
-      <div class="hdr-stat">
-        <div class="sv" id="hdr-donors">0</div>
-        <div class="sl">مخیر حضرات</div>
-      </div>
+      <div class="hdr-stat"><div class="sv" id="hdr-total">0</div><div class="sl">کل چندہ (₨)</div></div>
+      <div class="hdr-stat"><div class="sv" id="hdr-bal">0</div><div class="sl">بیلنس (₨)</div></div>
+      <div class="hdr-stat"><div class="sv" id="hdr-donors">0</div><div class="sl">مخیرین</div></div>
     </div>
   </div>
+  <div class="ticker"><span>🌿 TMC سہراب گوٹھ فلاحی فنڈ — ہر روپے کا حساب عوام کے سامنے | رابطہ: 0311-2221014</span></div>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <span>🌿 فلاحی فنڈ — ہر چندہ ریکارڈ میں محفوظ، ہر خرچ شفاف | رابطہ: 0311-2221014 | TMC سہراب گوٹھ</span>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       اسکرین 1: عوامی ہوم (بغیر لاگ ان)
-  ══════════════════════════════════════ -->
+  <!-- ══ HOME ══ -->
   <div id="sc-home" class="screen active">
-
     <div class="ibox green">
       <strong>🌿 فلاحی فنڈ کیا ہے؟</strong><br>
-      یہ ایک مکمل شفاف عوامی خزانہ ہے۔ آپ جو بھی چندہ دیں — وہ فوری ریکارڈ میں آتا ہے۔ ہر روپے کا حساب یہاں موجود ہے۔ رقم کہاں خرچ ہوئی، کس کی مدد کی گئی — سب علانیہ۔
+      یہ TMC سہراب گوٹھ کا شفاف عوامی خزانہ ہے۔ آپ رضاکارانہ چندہ دیں — رقم غریب خاندانوں، طبی مدد، تعلیم اور علاقے کے فلاحی کاموں پر خرچ ہوگی۔ ہر روپے کا حساب یہاں موجود ہے۔
     </div>
-
-    <!-- Live Summary -->
     <div class="sum-grid">
-      <div class="sum-box g">
-        <div class="sbv" id="home-total">0 ₨</div>
-        <div class="sbl">💰 کل جمع شدہ</div>
-      </div>
-      <div class="sum-box gold">
-        <div class="sbv" id="home-balance">0 ₨</div>
-        <div class="sbl">🏦 موجودہ بیلنس</div>
-      </div>
-      <div class="sum-box b">
-        <div class="sbv" id="home-projects">0</div>
-        <div class="sbl">🏗️ جاری منصوبے</div>
-      </div>
-      <div class="sum-box r">
-        <div class="sbv" id="home-helped">0</div>
-        <div class="sbl">🤝 مستفید افراد</div>
-      </div>
+      <div class="sum-box g"><div class="sbv" id="home-total">0 ₨</div><div class="sbl">💰 کل جمع شدہ</div></div>
+      <div class="sum-box gold"><div class="sbv" id="home-balance">0 ₨</div><div class="sbl">🏦 موجودہ بیلنس</div></div>
+      <div class="sum-box b"><div class="sbv" id="home-projects">0</div><div class="sbl">🏗️ جاری منصوبے</div></div>
+      <div class="sum-box r"><div class="sbv" id="home-helped">0</div><div class="sbl">🤝 مستفید افراد</div></div>
     </div>
-
-    <!-- Quick Actions -->
-    <button class="btn btn-gold" onclick="navTo('sc-donate')">💚 ابھی چندہ دیں</button>
-    <button class="btn btn-green" onclick="navTo('sc-ledger')">📋 شفاف حساب دیکھیں</button>
-    <button class="btn btn-outline" onclick="navTo('sc-projects')">🏗️ منصوبے دیکھیں</button>
-
+    <button class="btn btn-gold" onclick="goTo('sc-donate');setNav('bn-donate')">💚 ابھی چندہ دیں</button>
+    <button class="btn btn-green" onclick="goTo('sc-ledger');setNav('bn-ledger')">📋 شفاف حساب دیکھیں</button>
+    <button class="btn btn-outline" onclick="goTo('sc-projects');setNav('bn-projects')">🏗️ فلاحی منصوبے</button>
+    <button class="btn btn-outline" style="border-color:#4b5563;color:#4b5563;" onclick="goTo('sc-ucs')">🗺️ آٹھوں یونین کونسلیں</button>
     <div class="div"></div>
-    <button class="btn btn-outline" style="color:var(--gold); border-color:var(--gold);" onclick="navTo('sc-admin-login')">🔐 ایڈمن پینل</button>
+    <button class="btn btn-outline" style="color:var(--gold);border-color:var(--gold);" onclick="goTo('sc-admin-login')">🔐 ایڈمن پینل</button>
   </div>
 
-  <!-- ══════════════════════════════════════
-       اسکرین 2: چندہ فارم
-  ══════════════════════════════════════ -->
+  <!-- ══ DONATE ══ -->
   <div id="sc-donate" class="screen">
-    <div class="back-row">
-      <button class="back-btn" onclick="navTo('sc-home')">←</button>
-      <div class="stitle" style="margin:0;border:none;padding:0;">💚 چندہ دیں</div>
+    <div class="back-row"><button class="back-btn" onclick="goTo('sc-home');setNav('bn-home')">←</button><div class="stitle" style="margin:0;border:none;padding:0;">💚 چندہ دیں</div></div>
+    <div class="pay-guide">
+      <div class="pg-head">💳 چندہ دینے کے طریقے</div>
+      <div class="pg-body">
+        <strong>1️⃣ ایزی پیسہ:</strong> 0311-2221014 پر بھیجیں، ٹرانزیکشن نمبر یہاں لکھیں<br>
+        <strong>2️⃣ نقد:</strong> کونسلر دفتر آئیں، رسید لیں — ایڈمن منظور کرے گا<br>
+        <strong>3️⃣ بینک:</strong> TMC فنڈ اکاؤنٹ میں ٹرانسفر کریں
+      </div>
     </div>
-
-    <div class="ibox gold">
-      ✅ آپ کا نام مخیر حضرات کی فہرست میں شامل ہوگا۔ کوئی پیسہ ضائع نہیں ہوگا — ہر روپیہ ریکارڈ میں۔
-    </div>
-
-    <div class="fg">
-      <label>آپ کا نام *</label>
-      <input type="text" id="dn-name" placeholder="مثال: محمد اشرف">
-    </div>
-    <div class="fg">
-      <label>موبائل نمبر *</label>
-      <input type="tel" id="dn-phone" placeholder="مثال: 03001234567" maxlength="11">
-    </div>
-    <div class="fg">
-      <label>علاقہ / UC</label>
+    <div class="ibox gold">⏳ آپ کا چندہ ایڈمن کی تصدیق کے بعد عوامی ریکارڈ میں آئے گا — کوئی رقم بغیر تصدیق کے نہیں دکھے گی۔</div>
+    <div class="fg"><label>پورا نام *</label><input type="text" id="dn-name" placeholder="مثال: محمد اشرف"></div>
+    <div class="fg"><label>موبائل نمبر *</label><input type="tel" id="dn-phone" placeholder="مثال: 03001234567" maxlength="11"></div>
+    <div class="fg"><label>یونین کونسل *</label>
       <select id="dn-area">
-        <option value="">— منتخب کریں —</option>
-        <option>UC-1 جنت گل ٹاؤن</option>
-        <option>UC-2 سہراب گوٹھ مرکزی</option>
-        <option>UC-3 احسن آباد</option>
-        <option>UC-4 الاسراء ٹاؤن</option>
-        <option>UC-5 بنگالی موڑ</option>
-        <option>UC-6 ٹمبر مارکیٹ</option>
-        <option>UC-7 مچھر کالونی</option>
-        <option>UC-8 نئی سبزی منڈی</option>
-        <option>بیرون ضلع / سرپرست</option>
+        <option value="">— اپنی UC منتخب کریں —</option>
+        <option>UC-1 — جنت گل ٹاؤن</option>
+        <option>UC-2 — کوئٹہ ٹاؤن</option>
+        <option>UC-3 — سکھیا گوٹھ</option>
+        <option>UC-4 — ایوب گوٹھ</option>
+        <option>UC-5 — خادم حسین سولنگی گوٹھ</option>
+        <option>UC-6 — احسن آباد</option>
+        <option>UC-7 — یوسف صاحب خان گوٹھ</option>
+        <option>UC-8 — نئی سبزی منڈی</option>
+        <option>بیرون TMC / سرپرست</option>
       </select>
     </div>
-    <div class="fg">
-      <label>چندہ کی رقم (روپے) *</label>
-      <input type="number" id="dn-amount" placeholder="مثال: 500" min="10">
-    </div>
-    <div class="fg">
-      <label>ادائیگی کا طریقہ *</label>
+    <div class="fg"><label>چندہ کی رقم (₨) *</label><input type="number" id="dn-amount" placeholder="مثال: 500" min="10"></div>
+    <div class="fg"><label>ادائیگی کا طریقہ *</label>
       <select id="dn-method" onchange="toggleRef()">
         <option value="">— منتخب کریں —</option>
-        <option value="easypaisa">ایزی پیسہ</option>
-        <option value="jazzcash">جاز کیش</option>
-        <option value="bank">بینک ٹرانسفر</option>
-        <option value="cash">نقد (بذریعہ کونسلر دفتر)</option>
+        <option value="ایزی پیسہ — 0311-2221014">ایزی پیسہ (0311-2221014)</option>
+        <option value="بینک ٹرانسفر">بینک ٹرانسفر</option>
+        <option value="نقد — کونسلر دفتر">نقد — کونسلر دفتر</option>
       </select>
     </div>
-    <div class="fg" id="ref-wrap" style="display:none;">
-      <label>ٹرانزیکشن نمبر (ضروری)</label>
-      <input type="text" id="dn-ref" placeholder="مثال: TXN4829301">
-    </div>
-    <div class="fg">
-      <label>پیغام (اختیاری)</label>
-      <textarea id="dn-msg" rows="2" placeholder="مثال: سہراب گوٹھ کی ترقی کے لیے"></textarea>
-    </div>
-
-    <button class="btn btn-gold" onclick="submitDonation()">💚 چندہ ریکارڈ کریں</button>
-    <button class="btn btn-outline" onclick="navTo('sc-home')">← واپس</button>
+    <div class="fg" id="ref-wrap" style="display:none;"><label>ٹرانزیکشن نمبر (لازمی)</label><input type="text" id="dn-ref" placeholder="مثال: TXN4829301"></div>
+    <div class="fg"><label>پیغام (اختیاری)</label><textarea id="dn-msg" rows="2" placeholder="مثال: سہراب گوٹھ کی خدمت کے لیے"></textarea></div>
+    <button class="btn btn-gold" onclick="submitDonation()">💚 چندہ جمع کروائیں</button>
+    <button class="btn btn-outline" onclick="goTo('sc-home');setNav('bn-home')">← واپس</button>
   </div>
 
-  <!-- ══════════════════════════════════════
-       اسکرین 3: شفاف لیجر (حساب کتاب)
-  ══════════════════════════════════════ -->
+  <!-- ══ LEDGER ══ -->
   <div id="sc-ledger" class="screen">
-    <div class="back-row">
-      <button class="back-btn" onclick="navTo('sc-home')">←</button>
-      <div class="stitle" style="margin:0;border:none;padding:0;">📋 مکمل حساب کتاب</div>
-    </div>
-
+    <div class="back-row"><button class="back-btn" onclick="goTo('sc-home');setNav('bn-home')">←</button><div class="stitle" style="margin:0;border:none;padding:0;">📋 مکمل حساب کتاب</div></div>
     <div class="tabs">
-      <button class="tab on" onclick="switchTab('tl-all','tl')">تمام</button>
-      <button class="tab"    onclick="switchTab('tl-in','tl')">آمدنی</button>
-      <button class="tab"    onclick="switchTab('tl-out','tl')">اخراجات</button>
+      <button class="tab on" onclick="swTab(this,'tl-all')">تمام</button>
+      <button class="tab"   onclick="swTab(this,'tl-in')">آمدنی</button>
+      <button class="tab"   onclick="swTab(this,'tl-out')">اخراجات</button>
     </div>
-
-    <!-- Summary Bar -->
-    <div class="sum-grid" style="margin-bottom:14px;">
-      <div class="sum-box g">
-        <div class="sbv" id="led-income">0 ₨</div>
-        <div class="sbl">کل آمدنی</div>
-      </div>
-      <div class="sum-box r">
-        <div class="sbv" id="led-expense">0 ₨</div>
-        <div class="sbl">کل اخراجات</div>
-      </div>
+    <div class="sum-grid">
+      <div class="sum-box g"><div class="sbv" id="led-in">0 ₨</div><div class="sbl">کل آمدنی</div></div>
+      <div class="sum-box r"><div class="sbv" id="led-out">0 ₨</div><div class="sbl">کل اخراجات</div></div>
     </div>
-    <div class="sum-box gold" style="margin-bottom:16px; padding:14px;">
-      <div class="sbv" id="led-balance" style="font-size:24px;">0 ₨</div>
-      <div class="sbl">🏦 موجودہ بیلنس (فنڈ میں موجود)</div>
+    <div class="sum-box gold" style="margin-bottom:16px;padding:14px;border:1.5px solid var(--border);border-radius:14px;text-align:center;">
+      <div style="font-size:26px;font-weight:800;color:var(--gold);" id="led-bal">0 ₨</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">🏦 فنڈ میں موجود بیلنس</div>
     </div>
-
-    <div id="tl-all"  class="tpanel on" id="tl-all"></div>
-    <div id="tl-in"   class="tpanel"></div>
-    <div id="tl-out"  class="tpanel"></div>
+    <div id="tl-all" class="tpanel on"></div>
+    <div id="tl-in"  class="tpanel"></div>
+    <div id="tl-out" class="tpanel"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       اسکرین 4: منصوبے
-  ══════════════════════════════════════ -->
+  <!-- ══ PROJECTS ══ -->
   <div id="sc-projects" class="screen">
-    <div class="back-row">
-      <button class="back-btn" onclick="navTo('sc-home')">←</button>
-      <div class="stitle" style="margin:0;border:none;padding:0;">🏗️ فلاحی منصوبے</div>
-    </div>
-
+    <div class="back-row"><button class="back-btn" onclick="goTo('sc-home');setNav('bn-home')">←</button><div class="stitle" style="margin:0;border:none;padding:0;">🏗️ فلاحی منصوبے</div></div>
     <div class="tabs">
-      <button class="tab on" onclick="switchTab('tp-active','tp')">جاری</button>
-      <button class="tab"    onclick="switchTab('tp-done','tp')">مکمل</button>
-      <button class="tab"    onclick="switchTab('tp-donors','tp')">مخیرین</button>
+      <button class="tab on" onclick="swTab(this,'tp-active')">جاری</button>
+      <button class="tab"   onclick="swTab(this,'tp-done')">مکمل</button>
+      <button class="tab"   onclick="swTab(this,'tp-donors')">مخیرین</button>
     </div>
-
     <div id="tp-active" class="tpanel on"></div>
     <div id="tp-done"   class="tpanel"></div>
     <div id="tp-donors" class="tpanel"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       اسکرین 5: ایڈمن لاگ ان
-  ══════════════════════════════════════ -->
-  <div id="sc-admin-login" class="screen">
-    <div class="back-row">
-      <button class="back-btn" onclick="navTo('sc-home')">←</button>
-      <div class="stitle" style="margin:0;border:none;padding:0;">🔐 ایڈمن پینل</div>
+  <!-- ══ UC INFO ══ -->
+  <div id="sc-ucs" class="screen">
+    <div class="back-row"><button class="back-btn" onclick="goTo('sc-home');setNav('bn-home')">←</button><div class="stitle" style="margin:0;border:none;padding:0;">🗺️ سہراب گوٹھ — 8 یونین کونسلیں</div></div>
+    <div class="ibox blue">ℹ️ TMC سہراب گوٹھ، شرقی ضلع کراچی — سندھ لوکل گورنمنٹ ایکٹ 2013</div>
+    <table class="uc-table">
+      <tr><th>نمبر</th><th>یونین کونسل کا نام</th></tr>
+      <tr><td>UC-1</td><td>جنت گل ٹاؤن</td></tr>
+      <tr><td>UC-2</td><td>کوئٹہ ٹاؤن</td></tr>
+      <tr><td>UC-3</td><td>سکھیا گوٹھ</td></tr>
+      <tr><td>UC-4</td><td>ایوب گوٹھ</td></tr>
+      <tr><td>UC-5</td><td>خادم حسین سولنگی گوٹھ</td></tr>
+      <tr><td>UC-6</td><td>احسن آباد</td></tr>
+      <tr><td>UC-7</td><td>یوسف صاحب خان گوٹھ</td></tr>
+      <tr><td>UC-8</td><td>نئی سبزی منڈی</td></tr>
+    </table>
+    <div class="card">
+      <div class="crow"><span class="lbl">کونسلر</span><span class="val">عبدالرحیم ساریو</span></div>
+      <div class="crow"><span class="lbl">TMC</span><span class="val">سہراب گوٹھ</span></div>
+      <div class="crow"><span class="lbl">ضلع</span><span class="val">شرقی کراچی</span></div>
+      <div class="crow"><span class="lbl">رابطہ</span><span class="val g">0311-2221014</span></div>
     </div>
-
-    <div class="ibox blue">
-      ℹ️ یہ پینل صرف کونسلر اور مجاز افراد کے لیے ہے۔
-    </div>
-
-    <div class="fg">
-      <label>پاس ورڈ</label>
-      <input type="password" id="adm-pw" placeholder="ایڈمن پاس ورڈ درج کریں">
-    </div>
-    <button class="btn btn-green" onclick="adminLogin()">داخل ہوں</button>
-    <button class="btn btn-outline" onclick="navTo('sc-home')">← واپس</button>
   </div>
 
-  <!-- ══════════════════════════════════════
-       اسکرین 6: ایڈمن ڈیش بورڈ
-  ══════════════════════════════════════ -->
+  <!-- ══ ADMIN LOGIN ══ -->
+  <div id="sc-admin-login" class="screen">
+    <div class="back-row"><button class="back-btn" onclick="goTo('sc-home');setNav('bn-home')">←</button><div class="stitle" style="margin:0;border:none;padding:0;">🔐 ایڈمن پینل</div></div>
+    <div class="ibox blue">ℹ️ یہ پینل صرف کونسلر اور مجاز افراد کے لیے ہے۔</div>
+    <div class="fg"><label>پاس ورڈ</label><input type="password" id="adm-pw" placeholder="پاس ورڈ درج کریں"></div>
+    <button class="btn btn-green" onclick="adminLogin()">داخل ہوں</button>
+    <button class="btn btn-outline" onclick="goTo('sc-home');setNav('bn-home')">← واپس</button>
+  </div>
+
+  <!-- ══ ADMIN DASHBOARD ══ -->
   <div id="sc-admin" class="screen">
-    <div class="back-row">
-      <button class="back-btn" onclick="adminLogout()">←</button>
-      <div class="stitle" style="margin:0;border:none;padding:0;">⚙️ ایڈمن کنٹرول</div>
-    </div>
-
+    <div class="back-row"><button class="back-btn" onclick="adminLogout()">←</button><div class="stitle" style="margin:0;border:none;padding:0;">⚙️ ایڈمن کنٹرول</div></div>
     <div class="sum-grid">
-      <div class="sum-box g">
-        <div class="sbv" id="adm-total">0 ₨</div>
-        <div class="sbl">کل چندہ</div>
-      </div>
-      <div class="sum-box gold">
-        <div class="sbv" id="adm-balance">0 ₨</div>
-        <div class="sbl">بیلنس</div>
-      </div>
-      <div class="sum-box b">
-        <div class="sbv" id="adm-pending">0</div>
-        <div class="sbl">زیر التوا</div>
-      </div>
-      <div class="sum-box r">
-        <div class="sbv" id="adm-donors-cnt">0</div>
-        <div class="sbl">مخیرین</div>
-      </div>
+      <div class="sum-box g"><div class="sbv" id="adm-total">0 ₨</div><div class="sbl">کل چندہ</div></div>
+      <div class="sum-box gold"><div class="sbv" id="adm-bal">0 ₨</div><div class="sbl">بیلنس</div></div>
+      <div class="sum-box b"><div class="sbv" id="adm-pending">0</div><div class="sbl">زیر التوا</div></div>
+      <div class="sum-box r"><div class="sbv" id="adm-dc">0</div><div class="sbl">مخیرین</div></div>
     </div>
-
     <div class="tabs">
-      <button class="tab on" onclick="switchTab('ta-verify','ta')">تصدیق</button>
-      <button class="tab"    onclick="switchTab('ta-spend','ta')">خرچ</button>
-      <button class="tab"    onclick="switchTab('ta-proj','ta')">منصوبہ</button>
+      <button class="tab on" onclick="swTab(this,'ta-verify')">تصدیق ✅</button>
+      <button class="tab"   onclick="swTab(this,'ta-spend')">خرچ 📤</button>
+      <button class="tab"   onclick="swTab(this,'ta-proj')">منصوبہ 🏗️</button>
     </div>
-
-    <!-- Tab: Verify Donations -->
     <div id="ta-verify" class="tpanel on">
-      <div class="ibox gold">⚠️ زیر التوا چندہ جات — تصدیق کر کے منظور یا رد کریں</div>
-      <div id="adm-pending-list"></div>
+      <div class="ibox gold">⚠️ نیچے زیر التوا چندہ جات ہیں۔ اپنے ایزی پیسہ اکاؤنٹ سے تصدیق کریں، پھر منظور کریں۔</div>
+      <div id="adm-plist"></div>
     </div>
-
-    <!-- Tab: Record Expense -->
     <div id="ta-spend" class="tpanel">
-      <div class="ibox green">✅ فنڈ سے خرچ ریکارڈ کریں — ہر اخراج عوامی لیجر میں شامل ہوگا</div>
-      <div class="fg">
-        <label>خرچ کا عنوان *</label>
-        <input type="text" id="sp-title" placeholder="مثال: غریب خاندان کی مدد — UC-2">
-      </div>
-      <div class="fg">
-        <label>زمرہ</label>
+      <div class="ibox green">✅ صرف وہ رقم خرچ کریں جو واقعی بیلنس میں ہو — ہر اخراج عوامی لیجر میں شامل ہوگا</div>
+      <div class="fg"><label>خرچ کا عنوان *</label><input type="text" id="sp-title" placeholder="مثال: رحیمہ بی بی — طبی مدد UC-2"></div>
+      <div class="fg"><label>زمرہ</label>
         <select id="sp-cat">
-          <option value="غریب مدد">غریب خاندان کی مدد</option>
-          <option value="طبی مدد">طبی امداد</option>
-          <option value="تعلیم">تعلیمی امداد</option>
-          <option value="بنیادی ڈھانچہ">بنیادی ڈھانچہ (سڑک/گلی)</option>
-          <option value="پانی">پانی / نکاسی</option>
-          <option value="دیگر">دیگر</option>
+          <option>غریب خاندان کی مدد</option><option>طبی امداد</option>
+          <option>تعلیمی امداد</option><option>بنیادی ڈھانچہ</option>
+          <option>پانی / نکاسی</option><option>دیگر</option>
         </select>
       </div>
-      <div class="fg">
-        <label>رقم (روپے) *</label>
-        <input type="number" id="sp-amount" placeholder="مثال: 5000" min="1">
-      </div>
-      <div class="fg">
-        <label>علاقہ</label>
+      <div class="fg"><label>رقم (₨) *</label><input type="number" id="sp-amount" placeholder="مثال: 2000" min="1"></div>
+      <div class="fg"><label>یونین کونسل</label>
         <select id="sp-area">
-          <option>UC-1 جنت گل ٹاؤن</option>
-          <option>UC-2 سہراب گوٹھ مرکزی</option>
-          <option>UC-3 احسن آباد</option>
-          <option>UC-4 الاسراء ٹاؤن</option>
-          <option>UC-5 بنگالی موڑ</option>
-          <option>UC-6 ٹمبر مارکیٹ</option>
-          <option>UC-7 مچھر کالونی</option>
-          <option>UC-8 نئی سبزی منڈی</option>
+          <option>UC-1 — جنت گل ٹاؤن</option><option>UC-2 — کوئٹہ ٹاؤن</option>
+          <option>UC-3 — سکھیا گوٹھ</option><option>UC-4 — ایوب گوٹھ</option>
+          <option>UC-5 — خادم حسین سولنگی گوٹھ</option><option>UC-6 — احسن آباد</option>
+          <option>UC-7 — یوسف صاحب خان گوٹھ</option><option>UC-8 — نئی سبزی منڈی</option>
         </select>
       </div>
-      <div class="fg">
-        <label>تفصیل</label>
-        <textarea id="sp-desc" rows="2" placeholder="مثال: بیوہ خاتون کے علاج کے لیے"></textarea>
-      </div>
-      <div class="fg">
-        <label>مستفید شخص / نمائندہ (اختیاری)</label>
-        <input type="text" id="sp-bene" placeholder="مثال: رحیمہ بی بی، سہراب گوٹھ">
-      </div>
+      <div class="fg"><label>تفصیل</label><textarea id="sp-desc" rows="2" placeholder="مستفید شخص اور مدد کی تفصیل"></textarea></div>
       <button class="btn btn-green" onclick="recordExpense()">✅ اخراج ریکارڈ کریں</button>
     </div>
-
-    <!-- Tab: Add Project -->
     <div id="ta-proj" class="tpanel">
       <div class="ibox blue">ℹ️ نیا فلاحی منصوبہ شامل کریں</div>
-      <div class="fg">
-        <label>منصوبے کا نام *</label>
-        <input type="text" id="pr-name" placeholder="مثال: گلی پختہ کاری UC-3">
-      </div>
-      <div class="fg">
-        <label>ہدف رقم (₨) *</label>
-        <input type="number" id="pr-target" placeholder="مثال: 50000" min="100">
-      </div>
-      <div class="fg">
-        <label>علاقہ</label>
+      <div class="fg"><label>منصوبے کا نام *</label><input type="text" id="pr-name" placeholder="مثال: گلی پختہ کاری UC-4"></div>
+      <div class="fg"><label>ہدف رقم (₨) *</label><input type="number" id="pr-target" placeholder="مثال: 50000" min="100"></div>
+      <div class="fg"><label>یونین کونسل</label>
         <select id="pr-area">
-          <option>UC-1 جنت گل ٹاؤن</option>
-          <option>UC-2 سہراب گوٹھ مرکزی</option>
-          <option>UC-3 احسن آباد</option>
-          <option>UC-4 الاسراء ٹاؤن</option>
-          <option>UC-5 بنگالی موڑ</option>
-          <option>UC-6 ٹمبر مارکیٹ</option>
-          <option>UC-7 مچھر کالونی</option>
-          <option>UC-8 نئی سبزی منڈی</option>
+          <option>UC-1 — جنت گل ٹاؤن</option><option>UC-2 — کوئٹہ ٹاؤن</option>
+          <option>UC-3 — سکھیا گوٹھ</option><option>UC-4 — ایوب گوٹھ</option>
+          <option>UC-5 — خادم حسین سولنگی گوٹھ</option><option>UC-6 — احسن آباد</option>
+          <option>UC-7 — یوسف صاحب خان گوٹھ</option><option>UC-8 — نئی سبزی منڈی</option>
         </select>
       </div>
-      <div class="fg">
-        <label>تفصیل</label>
-        <textarea id="pr-desc" rows="2" placeholder="منصوبے کی مختصر تفصیل"></textarea>
-      </div>
+      <div class="fg"><label>تفصیل</label><textarea id="pr-desc" rows="2" placeholder="منصوبے کی مختصر تفصیل"></textarea></div>
       <button class="btn btn-green" onclick="addProject()">🏗️ منصوبہ شامل کریں</button>
     </div>
-
     <div class="div"></div>
-    <button class="btn btn-red" onclick="adminLogout()">🚪 ایڈمن لاگ آؤٹ</button>
+    <button class="btn btn-red" onclick="adminLogout()">🚪 لاگ آؤٹ</button>
   </div>
+</div>
 
-</div><!-- /shell -->
-
-<!-- ══ BOTTOM NAV ══ -->
-<div class="bnav" id="bnav" style="display:flex;">
-  <button class="bni on" id="bn-home"     onclick="navTo('sc-home');     setNav('bn-home')">
-    <span class="ni">🏠</span><span class="nl">ہوم</span>
-  </button>
-  <button class="bni" id="bn-donate"   onclick="navTo('sc-donate');   setNav('bn-donate')">
-    <span class="ni">💚</span><span class="nl">چندہ</span>
-  </button>
-  <button class="bni" id="bn-ledger"   onclick="navTo('sc-ledger');   buildLedger(); setNav('bn-ledger')">
-    <span class="ni">📋</span><span class="nl">حساب</span>
-  </button>
-  <button class="bni" id="bn-projects" onclick="navTo('sc-projects'); buildProjects(); setNav('bn-projects')">
-    <span class="ni">🏗️</span><span class="nl">منصوبے</span>
-  </button>
+<div class="bnav">
+  <button class="bni on" id="bn-home"     onclick="goTo('sc-home');setNav('bn-home')"><span class="ni">🏠</span><span class="nl">ہوم</span></button>
+  <button class="bni"    id="bn-donate"   onclick="goTo('sc-donate');setNav('bn-donate')"><span class="ni">💚</span><span class="nl">چندہ</span></button>
+  <button class="bni"    id="bn-ledger"   onclick="goTo('sc-ledger');setNav('bn-ledger')"><span class="ni">📋</span><span class="nl">حساب</span></button>
+  <button class="bni"    id="bn-projects" onclick="goTo('sc-projects');setNav('bn-projects')"><span class="ni">🏗️</span><span class="nl">منصوبے</span></button>
 </div>
 
 <script>
-/* ─────────────────────────────────────────
-   STATE & STORAGE
-───────────────────────────────────────── */
-var DB = {
-  donations: [],   // {id, name, phone, area, amount, method, ref, msg, date, status}
-  expenses:  [],   // {id, title, cat, amount, area, desc, bene, date}
-  projects:  []    // {id, name, target, raised, area, desc, status}
-};
-
+/* ══════════════════════════════════════════
+   ڈیٹا اسٹور — بالکل خالی شروع ہوتا ہے
+   کوئی بھی نمونہ ڈیٹا نہیں
+══════════════════════════════════════════ */
+var DB = { donations:[], expenses:[], projects:[] };
 var ADMIN_PW = 'tmc786';
-var adminOn  = false;
+// نئی KEY — پرانا تمام localStorage ڈیٹا نظرانداز ہوگا
+var STORE_KEY = 'ff_clean_v1';
 
-function save() {
-  try {
-    localStorage.setItem('ff_db', JSON.stringify(DB));
-  } catch(e) {}
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }catch(e){} }
+function load(){
+  try{
+    // صرف نئی KEY سے لوڈ — پرانی keys کا ڈیٹا نہیں آئے گا
+    var d = localStorage.getItem(STORE_KEY);
+    if(d){
+      var parsed = JSON.parse(d);
+      // صرف اگر valid data ہو
+      if(parsed && Array.isArray(parsed.donations)){
+        DB = parsed;
+      }
+    }
+  }catch(e){}
 }
 
-function load() {
-  try {
-    var d = localStorage.getItem('ff_db');
-    if (d) DB = JSON.parse(d);
-  } catch(e) {}
-}
+/* ══ COMPUTED ══ */
+function totalIn(){ return DB.donations.filter(function(d){return d.status==='approved';}).reduce(function(s,d){return s+d.amount;},0); }
+function totalOut(){ return DB.expenses.reduce(function(s,e){return s+e.amount;},0); }
+function bal(){ return totalIn()-totalOut(); }
+function pendingCnt(){ return DB.donations.filter(function(d){return d.status==='pending';}).length; }
 
-function seed() {
-  if (DB.donations.length === 0 && DB.projects.length === 0) {
-    DB.donations = [
-      { id:'d1', name:'حاجی کریم بخش', phone:'03211234567', area:'UC-1 جنت گل ٹاؤن', amount:5000, method:'easypaisa', ref:'TXN001', msg:'سہراب گوٹھ کے لیے', date:'مئی 2025', status:'approved' },
-      { id:'d2', name:'محمد اشرف قریشی', phone:'03001111222', area:'UC-3 احسن آباد', amount:2000, method:'cash', ref:'', msg:'', date:'مئی 2025', status:'approved' },
-      { id:'d3', name:'فاروق علی', phone:'03331234567', area:'UC-5 بنگالی موڑ', amount:1000, method:'jazzcash', ref:'TXN002', msg:'', date:'جون 2025', status:'pending' }
-    ];
-    DB.expenses = [
-      { id:'e1', title:'بیوہ خاتون کا علاج', cat:'طبی مدد', amount:3000, area:'UC-2 سہراب گوٹھ مرکزی', desc:'رحیمہ بی بی — ہسپتال فیس', bene:'رحیمہ بی بی', date:'مئی 2025' },
-      { id:'e2', title:'غریب طالب علم — فیس', cat:'تعلیم', amount:1500, area:'UC-4 الاسراء ٹاؤن', desc:'میٹرک فیس ادائیگی', bene:'علی حسن', date:'جون 2025' }
-    ];
-    DB.projects = [
-      { id:'p1', name:'گلی پختہ کاری UC-3', target:50000, raised:15000, area:'UC-3 احسن آباد', desc:'احسن آباد کی مرکزی گلی کی پختہ کاری', status:'active' },
-      { id:'p2', name:'صفائی مہم UC-1', target:10000, raised:10000, area:'UC-1 جنت گل ٹاؤن', desc:'جنت گل ٹاؤن میں صفائی مہم', status:'done' }
-    ];
-    save();
-  }
-}
-
-/* ─────────────────────────────────────────
-   COMPUTED STATS
-───────────────────────────────────────── */
-function totalIncome()  { return DB.donations.filter(function(d){ return d.status==='approved'; }).reduce(function(s,d){ return s+d.amount; },0); }
-function totalExpense() { return DB.expenses.reduce(function(s,e){ return s+e.amount; },0); }
-function balance()      { return totalIncome() - totalExpense(); }
-function pendingCount() { return DB.donations.filter(function(d){ return d.status==='pending'; }).length; }
-
-/* ─────────────────────────────────────────
-   INIT
-───────────────────────────────────────── */
-window.onload = function() {
-  load(); seed();
-  refreshStats();
-  document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+/* ══ INIT ══ */
+window.onload = function(){
+  load();
+  refresh();
+  document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 };
 
-function refreshStats() {
-  var inc = totalIncome(), exp = totalExpense(), bal = balance();
-  var donors = DB.donations.filter(function(d){ return d.status==='approved'; }).length;
-  var activeProj = DB.projects.filter(function(p){ return p.status==='active'; }).length;
-  var helped = DB.expenses.filter(function(e){ return e.cat==='غریب مدد'||e.cat==='طبی مدد'||e.cat==='تعلیم'; }).length;
-
-  // Header
-  set('hdr-total',  fmt(inc));
-  set('hdr-spent',  fmt(exp));
-  set('hdr-donors', donors);
-
-  // Home
-  set('home-total',    fmt(inc)+'₨');
-  set('home-balance',  fmt(bal)+'₨');
-  set('home-projects', activeProj);
-  set('home-helped',   helped);
-
-  // Ledger
-  set('led-income',  fmt(inc)+'₨');
-  set('led-expense', fmt(exp)+'₨');
-  set('led-balance', fmt(bal)+'₨');
-
-  // Admin
-  set('adm-total',      fmt(inc)+'₨');
-  set('adm-balance',    fmt(bal)+'₨');
-  set('adm-pending',    pendingCount());
-  set('adm-donors-cnt', donors);
+/* ══ REFRESH ══ */
+function refresh(){
+  var inc=totalIn(), exp=totalOut(), b=bal();
+  var donors=DB.donations.filter(function(d){return d.status==='approved';}).length;
+  var ap=DB.projects.filter(function(p){return p.status==='active';}).length;
+  var helped=DB.expenses.length;
+  s('hdr-total',fmt(inc)); s('hdr-bal',fmt(b)); s('hdr-donors',donors);
+  s('home-total',fmt(inc)+' ₨'); s('home-balance',fmt(b)+' ₨');
+  s('home-projects',ap); s('home-helped',helped);
+  s('led-in',fmt(inc)+' ₨'); s('led-out',fmt(exp)+' ₨'); s('led-bal',fmt(b)+' ₨');
+  s('adm-total',fmt(inc)+' ₨'); s('adm-bal',fmt(b)+' ₨');
+  s('adm-pending',pendingCnt()); s('adm-dc',donors);
 }
 
-/* ─────────────────────────────────────────
-   NAVIGATION
-───────────────────────────────────────── */
-function navTo(id) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+/* ══ NAV ══ */
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(function(x){x.classList.remove('active');});
   document.getElementById(id).classList.add('active');
-  if (id==='sc-ledger')   { buildLedger(); }
-  if (id==='sc-projects') { buildProjects(); }
-  if (id==='sc-admin')    { buildAdminPending(); refreshStats(); }
-  refreshStats();
+  refresh();
+  if(id==='sc-ledger') buildLedger();
+  if(id==='sc-projects') buildProjects();
+  if(id==='sc-admin'){ buildAdminPending(); refresh(); }
 }
-
-function setNav(id) {
-  document.querySelectorAll('.bni').forEach(function(b){ b.classList.remove('on'); });
-  var el = document.getElementById(id);
-  if(el) el.classList.add('on');
+function setNav(id){
+  document.querySelectorAll('.bni').forEach(function(b){b.classList.remove('on');});
+  var el=document.getElementById(id); if(el) el.classList.add('on');
 }
-
-function switchTab(panelId, grp) {
-  document.querySelectorAll('.tpanel').forEach(function(p){
-    if (p.closest('#sc-ledger') || p.closest('#sc-projects') || p.closest('#sc-admin')) p.classList.remove('on');
-  });
-  // simpler: just remove from siblings
-  var el = document.getElementById(panelId);
-  if (!el) return;
-  var parent = el.parentNode;
-  parent.querySelectorAll('.tpanel').forEach(function(p){ p.classList.remove('on'); });
-  el.classList.add('on');
-  // update tab buttons
-  var btn = event.target;
-  var tabsEl = btn.parentNode;
-  tabsEl.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+function swTab(btn,panelId){
+  var panel=document.getElementById(panelId); if(!panel) return;
+  panel.parentNode.querySelectorAll('.tpanel').forEach(function(p){p.classList.remove('on');});
+  panel.classList.add('on');
+  btn.parentNode.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
   btn.classList.add('on');
 }
 
-/* ─────────────────────────────────────────
-   DONATE
-───────────────────────────────────────── */
-function toggleRef() {
-  var m = document.getElementById('dn-method').value;
-  document.getElementById('ref-wrap').style.display = (m && m!=='cash') ? 'block' : 'none';
+/* ══ DONATE ══ */
+function toggleRef(){
+  var m=document.getElementById('dn-method').value;
+  document.getElementById('ref-wrap').style.display=(m && m.indexOf('نقد')===-1)?'block':'none';
 }
-
-function submitDonation() {
-  var name   = v('dn-name');
-  var phone  = v('dn-phone');
-  var area   = v('dn-area');
-  var amount = parseInt(v('dn-amount'));
-  var method = v('dn-method');
-  var ref    = v('dn-ref');
-  var msg    = v('dn-msg');
-
-  if (!name)             { toast('⚠️ نام لازمی ہے'); return; }
-  if (phone.length!==11||isNaN(phone)) { toast('⚠️ موبائل نمبر 11 ہندسے'); return; }
-  if (!amount||amount<10){ toast('⚠️ کم از کم 10 روپے'); return; }
-  if (!method)           { toast('⚠️ ادائیگی کا طریقہ منتخب کریں'); return; }
-  if (method!=='cash'&&!ref) { toast('⚠️ ٹرانزیکشن نمبر درج کریں'); return; }
-
-  var now = new Date();
+function submitDonation(){
+  var name=g('dn-name'), phone=g('dn-phone'), area=g('dn-area');
+  var amount=parseInt(g('dn-amount')), method=g('dn-method'), ref=g('dn-ref'), msg=g('dn-msg');
+  if(!name){ toast('⚠️ نام لازمی ہے'); return; }
+  if(phone.length!==11||isNaN(phone)){ toast('⚠️ موبائل 11 ہندسے'); return; }
+  if(!area){ toast('⚠️ اپنی UC منتخب کریں'); return; }
+  if(!amount||amount<10){ toast('⚠️ کم از کم 10 روپے'); return; }
+  if(!method){ toast('⚠️ ادائیگی کا طریقہ منتخب کریں'); return; }
+  if(method.indexOf('نقد')===-1&&!ref){ toast('⚠️ ٹرانزیکشن نمبر لازمی ہے'); return; }
   DB.donations.push({
-    id: 'd'+Date.now(),
-    name: name, phone: phone, area: area||'—',
-    amount: amount, method: method, ref: ref, msg: msg,
-    date: now.toLocaleDateString('ur-PK'),
-    status: 'pending'
+    id:'d'+Date.now(), name:name, phone:phone, area:area,
+    amount:amount, method:method, ref:ref, msg:msg,
+    date:new Date().toLocaleDateString('ur-PK'), status:'pending'
   });
-  save(); refreshStats();
-
-  ['dn-name','dn-phone','dn-amount','dn-ref','dn-msg'].forEach(function(id){ document.getElementById(id).value=''; });
-  document.getElementById('dn-area').value='';
-  document.getElementById('dn-method').value='';
+  save(); refresh();
+  ['dn-name','dn-phone','dn-amount','dn-ref','dn-msg'].forEach(function(i){document.getElementById(i).value='';});
+  document.getElementById('dn-area').value=''; document.getElementById('dn-method').value='';
   document.getElementById('ref-wrap').style.display='none';
-
-  showModal('💚', 'چندہ ریکارڈ ہو گیا!',
-    'نام: <strong>'+name+'</strong><br>'+
-    'رقم: <strong>'+fmt(amount)+' روپے</strong><br>'+
-    'طریقہ: <strong>'+method+'</strong><br><br>'+
-    '⏳ ایڈمن تصدیق کے بعد عوامی لیجر میں شامل ہوگا۔<br>'+
-    'شکریہ! آپ کا یہ قدم سہراب گوٹھ کے لیے روشنی ہے۔',
-    [{label:'جزاک اللہ خیر', cls:'btn-gold', fn:"navTo('sc-home'); closeModal();"}]
-  );
+  showModal('💚','درخواست موصول!',
+    'نام: <strong>'+name+'</strong><br>رقم: <strong>'+fmt(amount)+' روپے</strong><br>'+
+    '⏳ کونسلر آفس کی تصدیق کے بعد عوامی ریکارڈ میں شامل ہوگا۔<br>'+
+    'جھوٹ نہیں، صرف تصدیق شدہ رقم دکھے گی۔<br><strong>جزاک اللہ خیر 🌿</strong>',
+    [{label:'ٹھیک ہے', cls:'btn-gold', fn:"goTo('sc-home');setNav('bn-home');closeModal();"}]);
 }
 
-/* ─────────────────────────────────────────
-   LEDGER
-───────────────────────────────────────── */
-function buildLedger() {
-  var all = [];
-  DB.donations.filter(function(d){ return d.status==='approved'; }).forEach(function(d){
-    all.push({ type:'in', icon:'💚', title: d.name+' کا چندہ', sub: d.area+' | '+d.method, amount: d.amount, date: d.date });
+/* ══ LEDGER ══ */
+function buildLedger(){
+  var all=[];
+  DB.donations.filter(function(d){return d.status==='approved';}).forEach(function(d){
+    all.push({type:'in',icon:'💚',title:d.name+' کا چندہ',sub:d.area+' | '+d.method,amount:d.amount,date:d.date});
   });
   DB.expenses.forEach(function(e){
-    all.push({ type:'out', icon:'📤', title: e.title, sub: e.area+' | '+e.cat, amount: e.amount, date: e.date });
+    all.push({type:'out',icon:'📤',title:e.title,sub:e.area+' | '+e.cat,amount:e.amount,date:e.date});
   });
-  all.sort(function(a,b){ return (b.date>a.date)?1:-1; });
-
-  var inItems  = all.filter(function(i){ return i.type==='in'; });
-  var outItems = all.filter(function(i){ return i.type==='out'; });
-
-  set('tl-all',  renderLedger(all));
-  set('tl-in',   renderLedger(inItems));
-  set('tl-out',  renderLedger(outItems));
+  var empty = zeroBox('📋','ابھی کوئی اندراج نہیں','پہلا چندہ ایڈمن سے تصدیق کے بعد یہاں نظر آئے گا');
+  s('tl-all',  all.length  ? rLedger(all)   : empty);
+  s('tl-in',   all.filter(function(i){return i.type==='in';}).length  ? rLedger(all.filter(function(i){return i.type==='in';}))  : empty);
+  s('tl-out',  all.filter(function(i){return i.type==='out';}).length ? rLedger(all.filter(function(i){return i.type==='out';})) : empty);
 }
-
-function renderLedger(items) {
-  if (!items.length) return '<div class="ibox gold">کوئی اندراج نہیں۔</div>';
+function rLedger(items){
   return items.map(function(i){
     return '<div class="ledger-row">'+
       '<div class="led-icon '+(i.type==='in'?'led-in':'led-out')+'">'+i.icon+'</div>'+
       '<div class="led-info"><div class="led-title">'+i.title+'</div><div class="led-sub">'+i.sub+'</div></div>'+
-      '<div class="led-amount"><div class="la '+(i.type==='in'?'in':'out')+'">'+(i.type==='in'?'+':'-')+fmt(i.amount)+' ₨</div><div class="ld">'+i.date+'</div></div>'+
-      '</div>';
+      '<div class="led-amt"><div class="la '+(i.type==='in'?'in':'out')+'">'+(i.type==='in'?'+':'-')+fmt(i.amount)+'₨</div>'+
+      '<div class="ld">'+i.date+'</div></div></div>';
   }).join('');
 }
 
-/* ─────────────────────────────────────────
-   PROJECTS
-───────────────────────────────────────── */
-function buildProjects() {
-  var active = DB.projects.filter(function(p){ return p.status==='active'; });
-  var done   = DB.projects.filter(function(p){ return p.status==='done'; });
-  var donors = DB.donations.filter(function(d){ return d.status==='approved'; });
-
-  set('tp-active', renderProjects(active));
-  set('tp-done',   renderProjects(done));
-  set('tp-donors', renderDonors(donors));
+/* ══ PROJECTS ══ */
+function buildProjects(){
+  var empty = zeroBox('🏗️','ابھی کوئی منصوبہ نہیں','ایڈمن پینل سے نیا منصوبہ شامل کریں');
+  var donors=DB.donations.filter(function(d){return d.status==='approved';});
+  s('tp-active', DB.projects.filter(function(p){return p.status==='active';}).length
+    ? rProjects(DB.projects.filter(function(p){return p.status==='active';})) : empty);
+  s('tp-done',   DB.projects.filter(function(p){return p.status==='done';}).length
+    ? rProjects(DB.projects.filter(function(p){return p.status==='done';}))   : empty);
+  s('tp-donors', donors.length ? rDonors(donors) : zeroBox('💚','ابھی کوئی مخیر نہیں','پہلا چندہ آنے کے بعد نام یہاں آئے گا'));
 }
-
-function renderProjects(list) {
-  if (!list.length) return '<div class="ibox gold">کوئی منصوبہ نہیں۔</div>';
+function rProjects(list){
   return list.map(function(p){
-    var pct = Math.min(100, Math.round((p.raised/p.target)*100));
-    var colorClass = p.status==='done' ? 'gold' : '';
+    var pct=Math.min(100,Math.round((p.raised/p.target)*100));
     return '<div class="proj-card">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;">'+
-        '<div class="proj-title">'+p.name+'</div>'+
-        '<span class="badge '+(p.status==='active'?'badge-active':'badge-done')+'">'+(p.status==='active'?'🟢 جاری':'✅ مکمل')+'</span>'+
-      '</div>'+
-      '<div class="proj-sub">'+p.area+' | '+p.desc+'</div>'+
-      '<div class="proj-grid">'+
-        '<div class="proj-stat"><div class="ps-v">'+fmt(p.target)+' ₨</div><div class="ps-l">ہدف</div></div>'+
-        '<div class="proj-stat"><div class="ps-v">'+fmt(p.raised)+' ₨</div><div class="ps-l">جمع شدہ</div></div>'+
+      '<div style="font-size:15px;font-weight:700;">'+p.name+'</div>'+
+      '<span class="badge '+(p.status==='active'?'badge-active':'badge-done')+'">'+(p.status==='active'?'🟢 جاری':'✅ مکمل')+'</span></div>'+
+      '<div style="font-size:11px;color:var(--muted);margin:4px 0 10px;">'+p.area+' | '+p.desc+'</div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">'+
+        '<div style="background:var(--light);border-radius:10px;padding:8px;text-align:center;">'+
+          '<div style="font-size:14px;font-weight:800;color:var(--green);">'+fmt(p.target)+'₨</div>'+
+          '<div style="font-size:10px;color:var(--muted);">ہدف</div></div>'+
+        '<div style="background:var(--light);border-radius:10px;padding:8px;text-align:center;">'+
+          '<div style="font-size:14px;font-weight:800;color:var(--green);">'+fmt(p.raised)+'₨</div>'+
+          '<div style="font-size:10px;color:var(--muted);">جمع</div></div>'+
       '</div>'+
       '<div class="prog"><div class="prog-top"><span>پیشرفت</span><strong>'+pct+'%</strong></div>'+
-      '<div class="prog-bg"><div class="prog-fill '+colorClass+'" style="width:'+pct+'%"></div></div></div>'+
-      '</div>';
+      '<div class="prog-bg"><div class="prog-fill" style="width:'+pct+'%"></div></div></div></div>';
   }).join('');
 }
-
-function renderDonors(list) {
-  if (!list.length) return '<div class="ibox gold">ابھی کوئی مخیر نہیں۔</div>';
-  var sorted = list.slice().sort(function(a,b){ return b.amount-a.amount; });
-  var html = '<div class="card">';
-  sorted.forEach(function(d, i){
-    var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':'⭐';
-    html += '<div class="donor-row">'+
-      '<div><div class="donor-name">'+medal+' '+d.name+'</div><div class="donor-area">'+d.area+'</div></div>'+
-      '<div class="donor-amt">'+fmt(d.amount)+' ₨</div>'+
-      '</div>';
-  });
-  html += '</div>';
-  return html;
+function rDonors(list){
+  var sorted=list.slice().sort(function(a,b){return b.amount-a.amount;});
+  return '<div class="card">'+sorted.map(function(d,i){
+    var m=i===0?'🥇':i===1?'🥈':i===2?'🥉':'⭐';
+    return '<div class="donor-row">'+
+      '<div><div style="font-size:13px;font-weight:700;">'+m+' '+d.name+'</div>'+
+      '<div style="font-size:11px;color:var(--muted);">'+d.area+'</div></div>'+
+      '<div style="font-size:15px;font-weight:800;color:var(--green2);">'+fmt(d.amount)+'₨</div></div>';
+  }).join('')+'</div>';
 }
 
-/* ─────────────────────────────────────────
-   ADMIN
-───────────────────────────────────────── */
-function adminLogin() {
-  if (document.getElementById('adm-pw').value === ADMIN_PW) {
-    adminOn = true;
-    document.getElementById('adm-pw').value = '';
-    navTo('sc-admin');
-    toast('✅ ایڈمن پینل کھل گیا');
-  } else {
-    toast('❌ غلط پاس ورڈ');
-  }
+/* ══ ZERO BOX ══ */
+function zeroBox(icon,title,sub){
+  return '<div class="zero-box"><div class="zi">'+icon+'</div>'+
+    '<div class="zt">'+title+'</div><div class="zs">'+sub+'</div></div>';
 }
 
-function adminLogout() {
-  adminOn = false;
-  navTo('sc-home');
+/* ══ ADMIN ══ */
+function adminLogin(){
+  if(document.getElementById('adm-pw').value===ADMIN_PW){
+    document.getElementById('adm-pw').value='';
+    goTo('sc-admin'); toast('✅ ایڈمن پینل');
+  }else{ toast('❌ غلط پاس ورڈ'); }
 }
+function adminLogout(){ goTo('sc-home'); setNav('bn-home'); }
 
-function buildAdminPending() {
-  var pending = DB.donations.filter(function(d){ return d.status==='pending'; });
-  if (!pending.length) {
-    set('adm-pending-list', '<div class="ibox green">✅ تمام چندہ جات تصدیق شدہ ہیں۔</div>');
+function buildAdminPending(){
+  var pending=DB.donations.filter(function(d){return d.status==='pending';});
+  if(!pending.length){
+    s('adm-plist', zeroBox('✅','کوئی زیر التوا نہیں','تمام چندہ جات تصدیق شدہ ہیں'));
     return;
   }
-  var html = '';
-  pending.forEach(function(d){
-    html += '<div class="card" style="margin-bottom:12px;">'+
+  s('adm-plist', pending.map(function(d){
+    return '<div class="card" style="margin-bottom:12px;">'+
       '<div class="crow"><span class="lbl">نام</span><span class="val">'+d.name+'</span></div>'+
+      '<div class="crow"><span class="lbl">موبائل</span><span class="val">'+d.phone+'</span></div>'+
       '<div class="crow"><span class="lbl">رقم</span><span class="val gold">'+fmt(d.amount)+' ₨</span></div>'+
-      '<div class="crow"><span class="lbl">طریقہ</span><span class="val">'+d.method+(d.ref?' | '+d.ref:'')+'</span></div>'+
+      '<div class="crow"><span class="lbl">طریقہ</span><span class="val">'+d.method+'</span></div>'+
+      (d.ref?'<div class="crow"><span class="lbl">ٹرانزیکشن</span><span class="val">'+d.ref+'</span></div>':'')+
       '<div class="crow"><span class="lbl">علاقہ</span><span class="val">'+d.area+'</span></div>'+
       '<div class="crow"><span class="lbl">تاریخ</span><span class="val">'+d.date+'</span></div>'+
+      (d.msg?'<div class="crow"><span class="lbl">پیغام</span><span class="val">'+d.msg+'</span></div>':'')+
       '<div style="display:flex;gap:8px;margin-top:12px;">'+
-        '<button class="btn btn-green btn-sm" onclick="verifyDon(\''+d.id+'\',true)">✅ منظور</button>'+
+        '<button class="btn btn-green btn-sm" onclick="verifyDon(\''+d.id+'\',true)">✅ منظور — رقم واقعی آئی</button>'+
         '<button class="btn btn-red btn-sm" onclick="verifyDon(\''+d.id+'\',false)">❌ رد</button>'+
-      '</div>'+
-      '</div>';
-  });
-  set('adm-pending-list', html);
+      '</div></div>';
+  }).join(''));
+}
+function verifyDon(id,ok){
+  DB.donations.forEach(function(d){if(d.id===id) d.status=ok?'approved':'rejected';});
+  save(); refresh(); buildAdminPending();
+  toast(ok?'✅ منظور — عوامی لیجر میں شامل':'❌ رد کر دیا گیا');
+}
+function recordExpense(){
+  var title=g('sp-title'), cat=g('sp-cat'), amount=parseInt(g('sp-amount'));
+  var area=g('sp-area'), desc=g('sp-desc');
+  if(!title){ toast('⚠️ عنوان لازمی'); return; }
+  if(!amount||amount<1){ toast('⚠️ رقم درج کریں'); return; }
+  if(amount>bal()){ toast('⚠️ بیلنس ناکافی! موجودہ: '+fmt(bal())+' ₨'); return; }
+  DB.expenses.push({id:'e'+Date.now(),title:title,cat:cat,amount:amount,area:area,desc:desc,date:new Date().toLocaleDateString('ur-PK')});
+  save(); refresh();
+  ['sp-title','sp-amount','sp-desc'].forEach(function(i){document.getElementById(i).value='';});
+  showModal('📤','اخراج ریکارڈ!',
+    'عنوان: <strong>'+title+'</strong><br>رقم: <strong>'+fmt(amount)+' ₨</strong><br>عوامی لیجر میں شامل۔',
+    [{label:'ٹھیک ہے', cls:'btn-green', fn:'closeModal();'}]);
+}
+function addProject(){
+  var name=g('pr-name'), target=parseInt(g('pr-target')), area=g('pr-area'), desc=g('pr-desc');
+  if(!name){ toast('⚠️ نام لازمی'); return; }
+  if(!target||target<100){ toast('⚠️ ہدف رقم درج کریں'); return; }
+  DB.projects.push({id:'p'+Date.now(),name:name,target:target,raised:0,area:area,desc:desc,status:'active'});
+  save(); refresh(); toast('✅ منصوبہ شامل');
 }
 
-function verifyDon(id, approve) {
-  DB.donations.forEach(function(d){
-    if (d.id===id) d.status = approve ? 'approved' : 'rejected';
-  });
-  save(); refreshStats(); buildAdminPending();
-  toast(approve ? '✅ منظور ہو گیا' : '❌ رد کر دیا گیا');
-}
-
-function recordExpense() {
-  var title  = v('sp-title');
-  var cat    = v('sp-cat');
-  var amount = parseInt(v('sp-amount'));
-  var area   = v('sp-area');
-  var desc   = v('sp-desc');
-  var bene   = v('sp-bene');
-
-  if (!title)              { toast('⚠️ عنوان لازمی ہے'); return; }
-  if (!amount||amount<1)   { toast('⚠️ رقم درج کریں'); return; }
-  if (amount > balance())  { toast('⚠️ بیلنس ناکافی! موجودہ: '+fmt(balance())+' ₨'); return; }
-
-  DB.expenses.push({
-    id: 'e'+Date.now(),
-    title: title, cat: cat, amount: amount,
-    area: area, desc: desc, bene: bene,
-    date: new Date().toLocaleDateString('ur-PK')
-  });
-  save(); refreshStats();
-  ['sp-title','sp-amount','sp-desc','sp-bene'].forEach(function(i){ document.getElementById(i).value=''; });
-
-  showModal('📤', 'اخراج ریکارڈ!',
-    'عنوان: <strong>'+title+'</strong><br>'+
-    'رقم: <strong>'+fmt(amount)+' ₨</strong><br>'+
-    'یہ عوامی لیجر میں شامل ہو گیا ہے۔',
-    [{label:'ٹھیک ہے', cls:'btn-green', fn:'closeModal();'}]
-  );
-}
-
-function addProject() {
-  var name   = v('pr-name');
-  var target = parseInt(v('pr-target'));
-  var area   = v('pr-area');
-  var desc   = v('pr-desc');
-
-  if (!name)             { toast('⚠️ نام لازمی ہے'); return; }
-  if (!target||target<100){ toast('⚠️ ہدف رقم درج کریں'); return; }
-
-  DB.projects.push({
-    id: 'p'+Date.now(),
-    name: name, target: target, raised: 0,
-    area: area, desc: desc, status: 'active'
-  });
-  save(); refreshStats();
-  ['pr-name','pr-target','pr-desc'].forEach(function(i){ document.getElementById(i).value=''; });
-  toast('✅ منصوبہ شامل ہو گیا');
-}
-
-/* ─────────────────────────────────────────
-   MODAL
-───────────────────────────────────────── */
-function showModal(icon, title, msg, btns) {
-  set('mi', icon); set('mt', title); set('mm', msg);
-  var h = '';
-  btns.forEach(function(b){ h += '<button class="btn '+b.cls+'" onclick="'+b.fn+'">'+b.label+'</button>'; });
-  set('ma', h);
+/* ══ MODAL ══ */
+function showModal(icon,title,msg,btns){
+  s('mi',icon); s('mt',title); s('mm',msg);
+  s('ma',btns.map(function(b){return'<button class="btn '+b.cls+'" onclick="'+b.fn+'">'+b.label+'</button>';}).join(''));
   document.getElementById('modal').classList.add('open');
 }
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
 
-/* ─────────────────────────────────────────
-   HELPERS
-───────────────────────────────────────── */
-function navTo(id) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-  if (id==='sc-ledger')   buildLedger();
-  if (id==='sc-projects') buildProjects();
-  if (id==='sc-admin')    { buildAdminPending(); refreshStats(); }
-  refreshStats();
-}
-function set(id, html) { var el=document.getElementById(id); if(el) el.innerHTML=html; }
-function v(id) { var el=document.getElementById(id); return el ? el.value.trim() : ''; }
-function fmt(n) { return Number(n).toLocaleString(); }
-function toast(msg) {
-  var t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); },3000);
-}
+/* ══ HELPERS ══ */
+function s(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;}
+function g(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function fmt(n){return Number(n).toLocaleString();}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3500);}
 </script>
 </body>
 </html>
